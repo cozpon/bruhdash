@@ -33,7 +33,6 @@ global.bruhdash = {
 
   // returns the index of the first matching element from left to right
   lastIndexOf: function(array, number) {
-    var storage;
     for (var i = array.length - 1; i >= 0; i--){
       if (array[i] === number){
         return i;
@@ -45,7 +44,7 @@ global.bruhdash = {
 
   // returns an array with all elements except for the last element
   initial: function(array) {
-    var lastElement = array.pop();
+    array.pop();
     return array;
   },
   
@@ -63,7 +62,11 @@ global.bruhdash = {
   },
 
   // creates a slice of an array from the start index up to but not including the end index
-  slice: function () {
+  /*slice: function (arr) {
+    var 
+    for(i = 0; i < arr.length; i++) {
+
+    }
    
   },
 
@@ -72,7 +75,7 @@ global.bruhdash = {
     var dropped = arr.pop();
      return dropped;
   },
-
+*/
   // returns a slice of array with n elements dropped from the end
   dropRight: function() {
 
