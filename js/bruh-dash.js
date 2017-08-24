@@ -155,27 +155,44 @@ global.bruhdash = {
   },
 
   // removes elements of an array corresponding to the given indices
- /* pullAt: function (arr, val) {
+  pullAt: function (arr, val) {
     console.log("arr", arr);
     console.log("val", val);
+      for(var i = 0; i < arr.length; i++){
       var valueIndex = arr.indexOf(val);
       var vLength = val.length;
       arr.splice(valueIndex, vLength);
       console.log(arr, "newarr");
       console.log(valueIndex, "valIndex");
       console.log(vLength, "vLength");
+    }
       return arr; 
-     
-  },
- */
-  // creates an array excluding all the specified values
-  without: function() {
 
+  },
+ 
+  // creates an array excluding all the specified values
+  without: function(arr, val) {
+    console.log(arr, "arr");
+    console.log(val, "val");
+    for (var i = 0; i < val.length; i++){
+      var valIndex = arr.indexOf(val[i]);
+      console.log(arr, "array with");
+      console.log(valIndex, "valindex");
+      arr.splice(valIndex, 1);
+      console.log(arr, "array without");
+    }
+    return arr;
   },
 
   // returns an array with specified values excluded
-  difference: function() {
-
+  difference: function(arr1, arr2) {
+    var diffArr = [];
+    for (var i = 0; i < arr1.length; i++) {
+      if (arr2.indexOf(arr1[i]) === -1) {
+        diffArr.push(arr1[i]);
+      }
+    }
+    return diffArr;
   },
 
   /*******************
