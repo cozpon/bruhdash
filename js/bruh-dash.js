@@ -120,8 +120,6 @@ global.bruhdash = {
 
   // creates a slice of an array with n elements taken from the end
  takeRight: function (arr, n) {
-  console.log("n", n);
-    console.log("old arr", arr);
     var slicedRight = [];
     if (n === 0){
       return [];
@@ -136,27 +134,40 @@ global.bruhdash = {
         slicedRight.push(arr[i]);
       }
     
-    console.log(slicedRight, "sliced R");
-    console.log("new arr", arr);
+   
     return slicedRight.sort();
   },
 
   // fills elements of array with specified value from the start index
   // up to but not including the end index
   fill: function() {
-
   },
 
   // removes all given values from an array
-  pull: function () {
+    // if array has certain given values, return array without values
+  pull: function (arr, val) {
+      var valueIndex = arr.indexOf(val);
+      var vLength = val.length + 1;
+      arr.splice(valueIndex, vLength);
+    
+    return arr;
 
   },
 
   // removes elements of an array corresponding to the given indices
-  pullAt: function () {
-
+ /* pullAt: function (arr, val) {
+    console.log("arr", arr);
+    console.log("val", val);
+      var valueIndex = arr.indexOf(val);
+      var vLength = val.length;
+      arr.splice(valueIndex, vLength);
+      console.log(arr, "newarr");
+      console.log(valueIndex, "valIndex");
+      console.log(vLength, "vLength");
+      return arr; 
+     
   },
-
+ */
   // creates an array excluding all the specified values
   without: function() {
 
