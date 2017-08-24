@@ -31,7 +31,7 @@ global.bruhdash = {
     }
   },
 
-  // returns the index of the first matching element from left to right
+  // returns the index of the first matching element from right to left
   lastIndexOf: function(array, number) {
     for (var i = array.length - 1; i >= 0; i--){
       if (array[i] === number){
@@ -62,33 +62,83 @@ global.bruhdash = {
   },
 
   // creates a slice of an array from the start index up to but not including the end index
-  /*slice: function (arr) {
-    var 
-    for(i = 0; i < arr.length; i++) {
-
+  slice: function(arr, start, end) {
+    var slicedArr = []
+    for (var i = start; i < end; i++) {
+      slicedArr[slicedArr.length] = arr[i] 
     }
-   
+    return slicedArr;
   },
 
   // returns a slice of array with n elements dropped from the beginning
-  drop: function(arr){
-    var dropped = arr.pop();
-     return dropped;
+   drop: function(arr, num){
+     var dropArr = [];
+     for(var i = 0; i < arr.length; i++){
+       if(i >= num){
+         dropArr.push(arr[i]);
+       }else if(num === undefined){
+         arr.splice(0, 1);
+         return arr;
+       }
+     }
+     return dropArr;
   },
-*/
-  // returns a slice of array with n elements dropped from the end
-  dropRight: function() {
 
+  // returns a slice of array with n elements dropped from the end
+  dropRight: function(arr, n) {
+    if (n === undefined){
+      arr.pop();
+    } else {
+      for (var i = 0; i < n; i++){
+        arr.pop();
+      }
+    }
+    return arr;
   },
+
 
   // creates a slice of an array with n elements taken from the beginning
-  take: function () {
+  take: function (arr, n) {
+    var slicedArray = [];
+    var undArray = [];
 
-  },
+    if (n === 0){
+      return [];
+    } 
+    if (n > arr.length){
+      return arr;
+    }
+    if (n === undefined){
+      undArray.push(arr[0]);
+      return undArray;    
+    } 
+    for (var i = 0; i < n; i++){
+      slicedArray.push(arr[i]);
+      }
+    return slicedArray;
+    },
 
   // creates a slice of an array with n elements taken from the end
-  takeRight: function () {
-
+ takeRight: function (arr, n) {
+  console.log("n", n);
+    console.log("old arr", arr);
+    var slicedRight = [];
+    if (n === 0){
+      return [];
+    } 
+    if (n > arr.length){
+      return arr;
+    } 
+    if (n === undefined){
+        return arr.slice(-1)
+    }
+      for (var i = arr.length - 1; i >= n - 1; i--){
+        slicedRight.push(arr[i]);
+      }
+    
+    console.log(slicedRight, "sliced R");
+    console.log("new arr", arr);
+    return slicedRight.sort();
   },
 
   // fills elements of array with specified value from the start index
@@ -122,9 +172,14 @@ global.bruhdash = {
    *******************/ 
 
   // creates an array of grouped elements
-  zip: function () {
-
-  },
+  /* zip: function (arr, values) {
+   var newArray = [];
+    for (var i = 0; i < arr1.length; i++){
+      var smallArr = [];
+      smallArr.push(arr1[i], arr2[i]);
+      newArray.push(smallArr);
+      }
+      }, */
 
   // creates an array of grouped elements in their pre-zip configuration
   unzip: function () {
