@@ -10,14 +10,15 @@ var global = window || GLOBAL;
 global.bruhdash = {
 
   // returns the first element of an array
-  first: function(array) {
-    return array[0];
-
+  first: function(array){
+    var firstArray = array[0];
+    return firstArray;
   },
 
   // returns the last element of an array
-  last: function(array) {
-    return array.pop();
+  last: function(array){
+    var lastElement = array.pop();
+    return lastElement;
   },
 
   // returns the index of the first matching element from left to right
@@ -76,7 +77,7 @@ global.bruhdash = {
      for(var i = 0; i < arr.length; i++){
        if(i >= num){
          dropArr.push(arr[i]);
-       }else if(num === undefined){
+       } else if(num === undefined){
          arr.splice(0, 1);
          return arr;
        }
@@ -138,7 +139,7 @@ global.bruhdash = {
 
   // fills elements of array with specified value from the start index
   // up to but not including the end index
-  fill: function(arr, value, start, end) {
+  fill: function (arr, value, start, end) {
       var valAmount = end - start;
       var filled = 0;
       console.log(filled, "filled start");
@@ -147,19 +148,20 @@ global.bruhdash = {
       console.log(start, "start");
       console.log(end, "end");
       if (start === undefined && end === undefined){
-        for(var j = 0; j < arr.length; j++){
-          arr.splice(filled, 1, val);
-          filled++;
-        }
-      }else{ 
+        return arr.fill(value, start, end);
+      
+
+        console.log(arr, "new");
+      
+      } else { 
         for (var i = 0; i < valAmount; i++){
         arr.splice(start, 1, value);
         start++;
       }
-     }
+     
       return arr;
+  }
   },
-
   // removes all given values from an array
     // if array has certain given values, return array without values
   pull: function (arr, val) {
@@ -227,10 +229,11 @@ global.bruhdash = {
   },
 
   // creates an array of elements into groups of length of specified size
-  chunk: function(){
+  chunk: function (){
+  
 
+  
   },
-
   // iterates over elements of a collection and invokes iteratee for each element
   // Note: this should work for arrays and objects
   forEach: function() {
