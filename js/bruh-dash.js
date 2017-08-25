@@ -132,15 +132,32 @@ global.bruhdash = {
     }
       for (var i = arr.length - 1; i >= n - 1; i--){
         slicedRight.push(arr[i]);
-      }
-    
-   
+      } 
     return slicedRight.sort();
   },
 
   // fills elements of array with specified value from the start index
   // up to but not including the end index
-  fill: function() {
+  fill: function(arr, value, start, end) {
+      var valAmount = end - start;
+      var filled = 0;
+      console.log(filled, "filled start");
+      console.log(arr, "arr start");
+      console.log(value, "value start");
+      console.log(start, "start");
+      console.log(end, "end");
+      if (start === undefined && end === undefined){
+        for(var j = 0; j < arr.length; j++){
+          arr.splice(filled, 1, val);
+          filled++;
+        }
+      }else{ 
+        for (var i = 0; i < valAmount; i++){
+        arr.splice(start, 1, value);
+        start++;
+      }
+     }
+      return arr;
   },
 
   // removes all given values from an array
@@ -156,15 +173,12 @@ global.bruhdash = {
 
   // removes elements of an array corresponding to the given indices
   pullAt: function (arr, val) {
-    console.log("arr", arr);
-    console.log("val", val);
-      for(var i = 0; i < arr.length; i++){
-      var valueIndex = arr.indexOf(val);
-      var vLength = val.length;
-      arr.splice(valueIndex, vLength);
-      console.log(arr, "newarr");
-      console.log(valueIndex, "valIndex");
-      console.log(vLength, "vLength");
+      console.log(arr, "arr");
+      console.log(val, "valuesIndex");
+      var counter = 0;
+
+      for(var i = 0; i < val.length; i++){
+        arr.splice((val[i] - counter++), 1);
     }
       return arr; 
 
@@ -172,14 +186,11 @@ global.bruhdash = {
  
   // creates an array excluding all the specified values
   without: function(arr, val) {
-    console.log(arr, "arr");
-    console.log(val, "val");
+   
     for (var i = 0; i < val.length; i++){
       var valIndex = arr.indexOf(val[i]);
-      console.log(arr, "array with");
-      console.log(valIndex, "valindex");
       arr.splice(valIndex, 1);
-      console.log(arr, "array without");
+      
     }
     return arr;
   },
@@ -200,14 +211,15 @@ global.bruhdash = {
    *******************/ 
 
   // creates an array of grouped elements
-  /* zip: function (arr, values) {
+  zip: function (arr, values) {
    var newArray = [];
-    for (var i = 0; i < arr1.length; i++){
-      var smallArr = [];
-      smallArr.push(arr1[i], arr2[i]);
-      newArray.push(smallArr);
-      }
-      }, */
+    for(var i = 0; i < arr.length; i++){
+       var smallArr = [];
+        smallArr.push(arr[i], values[i]);
+        newArray.push(smallArr);
+     }
+      return newArray;
+   }, 
 
   // creates an array of grouped elements in their pre-zip configuration
   unzip: function () {
